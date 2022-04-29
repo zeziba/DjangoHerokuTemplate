@@ -20,7 +20,7 @@ jobs:
 
       - name: Run setup script
         working-directory: ./project
-        run: /bin/sh project/scripts/finalize.dev.sh
+        run: /bin/sh scripts/finalize.dev.sh
 
       - name: Run python tests
         run: scripts/test.sh
