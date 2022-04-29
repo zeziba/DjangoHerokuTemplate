@@ -15,5 +15,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Build the stack
         run: docker-compose up -d
-      - name: Test
-        run: docker run --network container:web appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8000/
+      - name: Test if local host is up
+        run: docker run --network container:djangoherokutemplate-web-1 appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8000/
+      - name: Run tests
+        run: scripts/test.sh
