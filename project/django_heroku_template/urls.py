@@ -22,7 +22,7 @@ from apps.interface import views as interface_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', interface_views.HomeView.as_view(), name="index")
+    path('', interface_views.HomeView.as_view(), name="index")
 ]
 
 if bool(settings.DEBUG):
