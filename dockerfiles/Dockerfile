@@ -25,12 +25,12 @@ RUN npm install npm@latest -g && \
 
 # install dependencies  
 RUN pip install --upgrade pip
-COPY requirements.txt .
+COPY requirements.dev.txt .
 # PyYAML causes errors on install ignoring it fixes this issue
 RUN pip install --ignore-installed PyYAML
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.dev.txt
 
-RUN npm install --prefix ./static/vendor bootstrap-sass bootstrap sass
+RUN npm install --prefix ./static/vendor bootstrap-sass bootstrap sass --save
 RUN npm install --prefix ./static/vendor webpack webpack-cli --save-dev
 
 # copy project
