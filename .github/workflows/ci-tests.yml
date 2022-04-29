@@ -1,12 +1,19 @@
 name: CI-Tests
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
-      - name: test
-        run: scripts/test.sh
+      - name: Build the stack
+        run: docker-compose up -d
+      - name: Test
+        run: docker run --network container:web appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8000/
