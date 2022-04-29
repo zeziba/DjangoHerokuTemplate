@@ -18,7 +18,7 @@ jobs:
       - name: Build the stack
         run: |
           docker-compose up --build -d 
-          python -m pip install django -y
+          python -m pip install django
 
       - name: Run setup script
         working-directory: ./project
