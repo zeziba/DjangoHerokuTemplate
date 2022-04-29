@@ -18,8 +18,11 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from apps.interface import views as interface_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('/', interface_views.HomeView.as_view(), name="index")
 ]
 
 if bool(settings.DEBUG):
