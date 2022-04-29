@@ -2,9 +2,11 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import environ
 
 
-DEFAULT_PROJECT_FOLDER_NAME = os.environ.get("DEFAULT_PROJECT_FOLDER_NAME", "django_heroku_template")
+env = environ.Env()
+DEFAULT_PROJECT_FOLDER_NAME = env("DEFAULT_PROJECT_FOLDER_NAME", "django_heroku_template")
 
 
 def main():

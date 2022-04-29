@@ -26,4 +26,8 @@ jobs:
         run: /bin/sh scripts/finalize.dev.sh
 
       - name: Run python tests
-        run: scripts/test.sh
+        working-directory: ./project
+        run: python manage.py test
+
+      # - name: Run tests
+      #   run: scripts/test.sh
