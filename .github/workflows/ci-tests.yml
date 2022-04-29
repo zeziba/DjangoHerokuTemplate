@@ -17,5 +17,5 @@ jobs:
         run: docker-compose up -d
       - name: Test if local host is up
         run: docker run --network container:djangoherokutemplate-web-1 appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8000/
-      - name: Run tests
+      - name: Run python tests
         run: scripts/test.sh
