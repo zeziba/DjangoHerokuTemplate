@@ -11,13 +11,16 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container: 
     steps:
       - uses: actions/checkout@v1
+
       - name: Build the stack
-        run: docker-compose up -d --name djangoherokutemplate-web-1 djangoherokutemplate-web-1
+        run: docker-compose up --build -d 
+
       - name: Run setup script
+        working-directory: ./project
         run: /bin/sh project/scripts/finalize.dev.sh
-      - name: Test if local host is up
-        run: docker run --network container:djangoherokutemplate-web-1 appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8000/
+
       - name: Run python tests
         run: scripts/test.sh
