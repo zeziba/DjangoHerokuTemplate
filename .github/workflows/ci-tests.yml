@@ -11,16 +11,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     container: 
     steps:
       - uses: actions/checkout@v1
 
       - name: Build the stack
         run: |
-          docker-compose up --build -d
-          python install django -y
-          cd project
-          /bin/sh scripts/finalize.dev.sh
-          cd ..
-          scripts/test.sh
+          docker-compose up --build -d 
+          python -m pip install django -y
+
+      - name: Run setup script
+        working-directory: ./project
+        run: /bin/sh scripts/finalize.dev.sh
+
+      - name: Run python tests
+        run: scripts/test.sh
