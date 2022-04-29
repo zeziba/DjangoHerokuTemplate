@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  {% comment %}
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}"> {% endcomment %}
+
+  <title>{% block title_large %}{% block title %}{% endblock title %}{% endblock title_large %}</title>
+
+  <link rel="stylesheet" href="{% static 'dist/index.css' %}" />
+  {% block extended_head_content %}{% endblock extended_head_content %}
+
+</head>
+
+<body>
+  {% block navbar %}{% endblock navbar %}
+  {% block body_content %}(no content){% endblock body_content %}
+  {% block footer %}{% endblock footer %}
+
+  <!-- Load bundled -->
+  <script src="{% static 'vendor/bundle/index-bundle.js' %%}"></script>
+</body>
+
+</html>
