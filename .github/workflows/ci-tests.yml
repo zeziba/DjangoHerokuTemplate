@@ -16,11 +16,8 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Build the stack
-        run: docker-compose up --build -d 
-
-      - name: Run setup script
-        working-directory: ./project
-        run: /bin/sh scripts/finalize.dev.sh
-
-      - name: Run python tests
-        run: scripts/test.sh
+        run: |
+          docker-compose up --build -d
+          cd project
+          /bin/sh scripts/finalize.dev.sh
+          scripts/test.sh
