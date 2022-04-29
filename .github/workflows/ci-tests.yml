@@ -19,6 +19,7 @@ jobs:
         run: |
           docker-compose up --build -d 
           python -m pip install django
+          python -m pip install -r ./project/requirements.dev.txt
 
       - name: Run setup script
         working-directory: ./project
