@@ -14,7 +14,7 @@ This template is designed with django 4+, python 3.8+ and npm in mind.
   - bootstrap5
   - bootstrap-sass
   - sass
-  - webpack for compualtion of css and js files
+  - webpack for compulation of css and js files
 
 
 ## Before use
