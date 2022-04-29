@@ -8,6 +8,34 @@ on:
     branches:
       - main
 
+env:
+  DEBUG: 1
+  SECRET_KEY: foo
+  DJANGO_ALLOWED_HOSTS: "localhost 127.0.0.1 [::1]"
+  SQL_ENGINE: django.db.backends.sqlite3
+  SQL_USER: resume_admin_dev
+  SQL_PASSWORD: ohsnap
+  SQL_HOST: db
+  SQL_PORT: 5432
+  DJANGO_SUPERUSER_USERNAME: root
+  DJANGO_SUPERUSER_EMAIL: othisisannoying@mail.com
+  DJANGO_SUPERUSER_PASSWORD: password
+  PYTHONUNBUFFERED: 1
+  PYTHONDONTWRITEBYTECODE: 1
+  PROJECT_FOLDER: django_heroku_template
+  DATABASE_TYPE: sqlite
+  DEFAULT_PROJECT_FOLDER_NAME: django_heroku_template
+  DATABASE_FILE_EXTENSION: sqlite3
+  EMAIL_USE_TLS: True
+  EMAIL_HOST: smtp.gmail.com
+  EMAIL_HOST_USER: EXAMPLE@mail.com
+  EMAIL_HOST_PASSWORD: EXAMPLE_EMAIL_PASSWORD
+  EMAIL_DEST: EXAMPLE_DESTINATION@mail.com
+  EMAIL_BACKEND: django.core.mail.backends.console.EmailBackend
+  STATIC_FILE_STORAGE: whitenoise.storage.CompressedManifestStaticFilesStorage
+  DISABLE_EXISTING_LOGGERS: False
+  DJANGO_LOG_LEVEL: INFO
+
 jobs:
   test:
     runs-on: ubuntu-latest
