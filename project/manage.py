@@ -6,7 +6,7 @@ import environ
 
 
 env = environ.Env()
-DEFAULT_PROJECT_FOLDER_NAME = env("DEFAULT_PROJECT_FOLDER_NAME", "django_heroku_template")
+DEFAULT_PROJECT_FOLDER_NAME = env.str("DEFAULT_PROJECT_FOLDER_NAME", "django_heroku_template")  # type: ignore
 
 
 def main():
