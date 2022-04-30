@@ -93,6 +93,11 @@ Run the following command
 Or just the following one liner
 - `docker-compose -f docker-compose.yml up --build`
 
+Once the container is up and running we can run the mentioned command to init all the databases including the admin users with the following command
+- `docker-compose -f docker-compose.yml exec web python3 .\scripts\finalize.dev.sh`
+
+If you don't want to run all of the commands but only sections then just run the `docker-compose` command with the needed arguments or open a cli on the docker container and run it in the system.
+
 
 ## Installation is now complete and the template is ready to be used.
 
