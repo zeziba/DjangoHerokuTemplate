@@ -39,38 +39,41 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default="[*]")  # type: ignore
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'apps.users',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "apps.users",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = f'{ PROJECT_FOLDER_DIR }.urls'
+ROOT_URLCONF = f"{ PROJECT_FOLDER_DIR }.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates"), os.path.join(BASE_DIR, 'apps', "templates")],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [
+            os.path.join(BASE_DIR, "templates"),
+            os.path.join(BASE_DIR, "apps", "templates"),
+        ],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
@@ -81,7 +84,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.request",
 ]
 
-WSGI_APPLICATION = f'{ PROJECT_FOLDER_DIR }.wsgi.application'
+WSGI_APPLICATION = f"{ PROJECT_FOLDER_DIR }.wsgi.application"
 
 
 # Database
@@ -89,10 +92,10 @@ WSGI_APPLICATION = f'{ PROJECT_FOLDER_DIR }.wsgi.application'
 
 DATABASE_TYPE = os.environ.get("DATABASE_TYPE", "sqlite")
 DATABASE_PATH = os.environ.get("SQL_HOST", f"db.{DATABASE_TYPE}")
+if os.path.isdir("databases"):
+    os.mkdir("databases")
 DATABASE_PATH = f"{DATABASE_TYPE}:///{ os.path.join('databases', DATABASE_PATH)}.{env('DATABASE_FILE_EXTENSION')}"
-DATABASES = {
-    'default': env.db(default=DATABASE_PATH)  # type: ignore
-}
+DATABASES = {"default": env.db(default=DATABASE_PATH)}  # type: ignore
 
 # Change 'default' database configuration with $DATABASE_URL.
 database_env_update = dj_database_url.config(
@@ -109,16 +112,16 @@ del DATABASES["default"]["OPTIONS"]["sslmode"]  # type: ignore
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -146,9 +149,9 @@ EMAIL_DEST = env("EMAIL_DEST")
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -160,10 +163,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = [
-]
+STATICFILES_DIRS = []
 
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -182,7 +184,7 @@ STATICFILES_STORAGE = env("STATIC_FILE_STORAGE")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Log everything to the console, including tracebacks
 LOGGING = {
@@ -215,7 +217,7 @@ CSRF_COOKIE_SECURE = ENABLE_SSL
 # SECURE_SSL_REDIRECT = ENABLE_SSL
 if ENABLE_SSL:
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-    
+
 # Django Sass
 SASS_PROCESSOR_ROOT = STATIC_ROOT
 SASS_PROCESSOR_INCLUDE_DIRS = [
