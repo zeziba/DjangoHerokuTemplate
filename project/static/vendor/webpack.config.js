@@ -5,5 +5,6 @@ module.exports = {
   output: {
     filename: 'index-bundle.js', // output bundle file name
     path: path.resolve(__dirname, './bundle'), // path to our Django static directory
+    asyncChunks: true,
   },
 };

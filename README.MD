@@ -81,3 +81,13 @@ Or just the following one liner
 
 
 ## Installation is now complete and the template is ready to be used.
+
+## Use of webpack
+From the root directory of the project run the following command
+- `npm run --prefix=.\project\static\vendor\ dev`
+
+If the directory is moved change the prefix accordingly 
+
+Once the above command is run it will create the bundled js file in the static folder of the project located in the directory called bundle. As the base template already imports it at the end nothing else is required to get it to work.
+
+Just create all site wide js files in the root/assets directory and allow webpack to do it's thing.
