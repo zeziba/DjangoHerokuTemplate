@@ -35,7 +35,7 @@ Next activate the virtual environment
 
 Once the virtual environment is activated then install django and get the template
 
-- `python -m pip install django -y`
+- `python -m pip install django`
 - `python -m django startproject --template=https://github.com/zeziba/DjangoHerokuTemplate/zipball/main --extension=py,md <Project Name> .`
 
 Next using npm install the nessisary files with the following command
@@ -45,6 +45,20 @@ Change directory to the correct path
 
 Then install using npm
 - `npm install`
+
+Finally install the python dependencies 
+- `cd ../../..` to go back to the root directory
+- `python -m pip install -r .\project\requirements.dev.txt`
+
+# Set the config properly
+At this point the project is ready to be used by git or other version control systems
+
+If using git before closing the shell window run `git init` to start the control system in the current directory which should be your <project_name> directory root
+
+Once the version control is started open ./enviroments/.env and change the envrionment file as needed. It is of critical notice that you should change the 
+PROJECT_FOLDER=django_heroku_template and DEFAULT_PROJECT_FOLDER_NAME values at which time you can rename the ./project/django_heroku_template to the same value
+this will set up the project correctly. It should also be taken into account that if these environment variables are not present in a shell you are using to run commands you will get errors so you will have to manually set them to run these commands. As this project uses docker they are already set once the container is live so there is no need to set them if you run the commands from the docker.
+
 
 ## Usage
 Once the template is installed by django it is time to set eveything to a running state.
