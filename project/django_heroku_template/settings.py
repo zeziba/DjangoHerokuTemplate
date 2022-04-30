@@ -92,7 +92,7 @@ WSGI_APPLICATION = f"{ PROJECT_FOLDER_DIR }.wsgi.application"
 
 DATABASE_TYPE = os.environ.get("DATABASE_TYPE", "sqlite")
 DATABASE_PATH = os.environ.get("SQL_HOST", f"db.{DATABASE_TYPE}")
-if os.path.isdir("databases"):
+if not os.path.isdir("databases"):
     os.mkdir("databases")
 DATABASE_PATH = f"{DATABASE_TYPE}:///{ os.path.join('databases', DATABASE_PATH)}.{env('DATABASE_FILE_EXTENSION')}"
 DATABASES = {"default": env.db(default=DATABASE_PATH)}  # type: ignore
