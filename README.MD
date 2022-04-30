@@ -36,7 +36,7 @@ Next activate the virtual environment
 Once the virtual environment is activated then install django and get the template
 
 - `python -m pip install django -y`
-- `python -m django --template=https://github.com/zeziba/DjangoHerokuTemplate/zipball/main --extension=py,md <project_name>`
+- `python -m django startproject --template=https://github.com/zeziba/DjangoHerokuTemplate/zipball/main --extension=py,md <Project Name> .`
 
 Next using npm install the nessisary files with the following command
 
